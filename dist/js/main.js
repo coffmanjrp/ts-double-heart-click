@@ -16,7 +16,8 @@ var createHeart = function (e) {
     heart.style.top = yInside + "px";
     heart.style.left = xInside + "px";
     loveMe.appendChild(heart);
-    times.innerHTML = ++timesClicked;
+    var likes = ++timesClicked;
+    times.innerHTML = likes.toString();
     setTimeout(function () { return heart.remove(); }, 1000);
 };
 loveMe.addEventListener('click', function (e) {

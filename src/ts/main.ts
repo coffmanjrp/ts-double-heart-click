@@ -4,7 +4,7 @@ const times = document.querySelector('#times') as HTMLDivElement;
 let clickTime = 0;
 let timesClicked = 0;
 
-const createHeart = (e) => {
+const createHeart = (e: MouseEvent) => {
   const heart = document.createElement('i');
   heart.classList.add('fas');
   heart.classList.add('fa-heart');
@@ -12,8 +12,8 @@ const createHeart = (e) => {
   const x = e.clientX;
   const y = e.clientY;
 
-  const leftOffset = e.target.offsetLeft;
-  const topOffset = e.target.offsetTop;
+  const leftOffset = (e.target as HTMLDivElement).offsetLeft;
+  const topOffset = (e.target as HTMLDivElement).offsetTop;
 
   const xInside = x - leftOffset;
   const yInside = y - topOffset;
@@ -23,7 +23,9 @@ const createHeart = (e) => {
 
   loveMe.appendChild(heart);
 
-  times.innerHTML = ++timesClicked;
+  const likes = ++timesClicked;
+
+  times.innerHTML = likes.toString();
 
   setTimeout(() => heart.remove(), 1000);
 };
